@@ -9,10 +9,14 @@ import java.util.List;
 @Entity
 @Table(name = "athletics_competitions")
 @DiscriminatorValue("Athletic Competition")
+@NamedQuery(name = "GaraPerVincitore", query = "SELECT g FROM GaraDiAtletica g WHERE g.vincitore = :persona")
 public class GaraDiAtletica extends Evento {
 
-    @OneToMany
-    @Column(name = "athlets", nullable = false)
+
+    @ManyToMany
+    @JoinTable(name = "athlet_competition",
+            joinColumns = @JoinColumn(name = "competition_id", nullable = false),
+            inverseJoinColumns = @JoinColumn(name = "athlet_id", nullable = false))
     private List<Persona> atleti;
 
     @OneToOne

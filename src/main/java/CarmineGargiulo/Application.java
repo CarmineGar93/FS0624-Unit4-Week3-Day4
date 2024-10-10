@@ -15,6 +15,9 @@ import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Locale;
 
 public class Application {
@@ -59,6 +62,8 @@ public class Application {
         Persona alenaFromDb = ped.getById("c8fe12b5-be93-4e49-8fb1-21a99fa37a16");
         Persona francescoFromDb = ped.getById("e5e2a27d-6055-4bbd-8890-ec0a126ee64d");
 
+        List<Persona> atleti = new ArrayList<>(Arrays.asList(carmineFromDb, alenaFromDb, francescoFromDb));
+
         Concerto concertoImagine = new Concerto("Imagine Dragons", LocalDate.of(2025, 6, 11),
                 "Concerto Imagine Dragons", TipoEvento.PUBBLICO, 50000, stadioMaradonaFromDb, Genere.POP, false);
         Concerto concertoTaylor = new Concerto("Taylor Swift", LocalDate.of(2024, 12, 25),
@@ -75,6 +80,9 @@ public class Application {
                 "6° giornata di Serie A", TipoEvento.PUBBLICO, 50000, stadioMaradonaFromDb, "Napoli", 3, "Como", 1);
         PartitaDiCalcio LazioMilan = new PartitaDiCalcio("Lazio-Milan", LocalDate.of(2024, 8, 31),
                 "2° giornata di Serie A", TipoEvento.PUBBLICO, 55000, stadioOlimpicoFromDb, "Lazio", 2, "Milan", 2);
+        GaraDiAtletica metri100 = new GaraDiAtletica("Gara atletica 100mt", LocalDate.now(), "Bella gara olimpica", TipoEvento.PUBBLICO, 2, stadioOlimpicoFromDb, atleti, 2);
+        GaraDiAtletica metri200 = new GaraDiAtletica("Gara atletica 200mt", LocalDate.now(), "Bella gara olimpica 2", TipoEvento.PUBBLICO, 3, stadioMaradonaFromDb, atleti, 1);
+
 
         Evento InterMilanFromDb = ed.getById("5787ff9c-4874-4726-a0cd-0c61bfba3704");
         Evento concertoMozartFromDb = ed.getById("13b1d763-4a61-44a1-ab48-b07ef846703e");
@@ -94,6 +102,7 @@ public class Application {
         ed.save(NapoliComo);
         ed.save(MilanLecce);*/
         /*ed.save(LazioMilan);*/
+        /*ed.save(metri100);*/
         ed.getConcertiInStreaming(true).forEach(System.out::println);
         ed.getConcertiInStreaming(false).forEach(System.out::println);
         ed.getConcertiPerGenere(Genere.POP).forEach(System.out::println);
@@ -102,6 +111,7 @@ public class Application {
         ed.getPartitePareggiate().forEach(System.out::println);
         ed.getPartecipazioniDaConfermarePerEvento(InterMilanFromDb).forEach(System.out::println);
         ed.getPartecipazioniDaConfermarePerEvento(concertoMozartFromDb).forEach(System.out::println);
+        ed.getGaraDiAtleticaPerVincitore(alenaFromDb).forEach(System.out::println);
 
 
     }
