@@ -73,6 +73,17 @@ public class Application {
                 "5° giornata di Serie A", TipoEvento.PUBBLICO, 60000, sanSiroFromDb, "Milan", 3, "Lecce", 0);
         PartitaDiCalcio NapoliComo = new PartitaDiCalcio("NapoliComo", LocalDate.of(2024, 10, 4),
                 "6° giornata di Serie A", TipoEvento.PUBBLICO, 50000, stadioMaradonaFromDb, "Napoli", 3, "Como", 1);
+
+        Evento InterMilanFromDb = ed.getById("5787ff9c-4874-4726-a0cd-0c61bfba3704");
+        Evento concertoMozartFromDb = ed.getById("13b1d763-4a61-44a1-ab48-b07ef846703e");
+        Partecipazione p1 = new Partecipazione(Stato.DA_CONFERMARE, carmineFromDb, InterMilanFromDb);
+        Partecipazione p2 = new Partecipazione(Stato.DA_CONFERMARE, alenaFromDb, InterMilanFromDb);
+        Partecipazione p3 = new Partecipazione(Stato.CONFERMATA, francescoFromDb, concertoMozartFromDb);
+        Partecipazione p4 = new Partecipazione(Stato.DA_CONFERMARE, carmineFromDb, concertoMozartFromDb);
+       /* pad.save(p1);
+        pad.save(p2);
+        pad.save(p3);
+        pad.save(p4);*/
        /* ed.save(concertoImagine);
         ed.save(concertoACDC);
         ed.save(concertoMozart);*/
@@ -85,6 +96,8 @@ public class Application {
         ed.getConcertiPerGenere(Genere.POP).forEach(System.out::println);
         ed.getPartiteVinteInCasa().forEach(System.out::println);
         ed.getPartiteVinteInTrasferta().forEach(System.out::println);
+        ed.getPartecipazioniDaConfermarePerEvento(InterMilanFromDb).forEach(System.out::println);
+        ed.getPartecipazioniDaConfermarePerEvento(concertoMozartFromDb).forEach(System.out::println);
 
     }
 }

@@ -12,6 +12,7 @@ import java.util.UUID;
 @Table(name = "events")
 @Inheritance(strategy = InheritanceType.JOINED)
 @DiscriminatorColumn(name = "tipo_evento")
+@NamedQuery(name = "partecipazioniPerEvento", query = "SELECT p FROM Partecipazione p WHERE p.stato = DA_CONFERMARE AND p.evento = :evento")
 public class Evento {
     @Id
     @GeneratedValue

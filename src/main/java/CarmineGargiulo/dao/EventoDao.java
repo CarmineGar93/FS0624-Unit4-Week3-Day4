@@ -3,6 +3,7 @@ package CarmineGargiulo.dao;
 import CarmineGargiulo.Enums.Genere;
 import CarmineGargiulo.entities.Concerto;
 import CarmineGargiulo.entities.Evento;
+import CarmineGargiulo.entities.Partecipazione;
 import CarmineGargiulo.entities.PartitaDiCalcio;
 import CarmineGargiulo.exceptions.NotFoundException;
 import jakarta.persistence.EntityManager;
@@ -55,12 +56,18 @@ public class EventoDao {
     }
 
     public List<PartitaDiCalcio> getPartiteVinteInCasa(){
-        TypedQuery<PartitaDiCalcio> query = entityManager.createQuery("SELECT p FROM PartitaDiCalcio p WHERE p.squadraVincente = p.squadraCasa", PartitaDiCalcio.class);
+        TypedQuery<PartitaDiCalcio> query = entityManager.createNamedQuery("partiteVinteInCasa", PartitaDiCalcio.class);
         return query.getResultList();
     }
 
     public List<PartitaDiCalcio> getPartiteVinteInTrasferta(){
-        TypedQuery<PartitaDiCalcio> query = entityManager.createQuery("SELECT p FROM PartitaDiCalcio p WHERE p.squadraVincente = p.squadraOspite", PartitaDiCalcio.class);
+        TypedQuery<PartitaDiCalcio> query = entityManager.createNamedQuery("partiteVinteInTrasferta", PartitaDiCalcio.class);
+        return query.getResultList();
+    }
+
+    public List<Partecipazione> getPartecipazioniDaConfermarePerEvento(Evento e){
+        TypedQuery<Partecipazione> query = entityManager.createNamedQuery("partecipazioniPerEvento", Partecipazione.class);
+        query.setParameter("evento", e);
         return query.getResultList();
     }
 }
