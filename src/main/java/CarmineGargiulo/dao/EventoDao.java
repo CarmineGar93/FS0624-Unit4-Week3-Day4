@@ -78,4 +78,10 @@ public class EventoDao {
         query.setParameter("persona", p);
         return query.getResultList();
     }
+
+    public List<GaraDiAtletica> getGaraDiAtleticaPerPartecipante(Persona p){
+        TypedQuery<GaraDiAtletica> query = entityManager.createNamedQuery("GaraPerPartecipante", GaraDiAtletica.class);
+        query.setParameter("persona", p);
+        return query.getResultList();
+    }
 }

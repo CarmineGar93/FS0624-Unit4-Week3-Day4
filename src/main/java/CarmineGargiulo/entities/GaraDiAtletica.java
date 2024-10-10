@@ -10,6 +10,7 @@ import java.util.List;
 @Table(name = "athletics_competitions")
 @DiscriminatorValue("Athletic Competition")
 @NamedQuery(name = "GaraPerVincitore", query = "SELECT g FROM GaraDiAtletica g WHERE g.vincitore = :persona")
+@NamedQuery(name = "GaraPerPartecipante", query = "SELECT g FROM GaraDiAtletica g WHERE :persona MEMBER OF g.atleti")
 public class GaraDiAtletica extends Evento {
 
 
