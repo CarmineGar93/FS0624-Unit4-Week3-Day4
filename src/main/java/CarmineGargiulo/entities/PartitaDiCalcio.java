@@ -10,6 +10,7 @@ import java.time.LocalDate;
 @DiscriminatorValue("Football Game")
 @NamedQuery(name = "partiteVinteInCasa", query = "SELECT p FROM PartitaDiCalcio p WHERE p.squadraVincente = p.squadraCasa")
 @NamedQuery(name = "partiteVinteInTrasferta", query = "SELECT p FROM PartitaDiCalcio p WHERE p.squadraVincente = p.squadraOspite")
+@NamedQuery(name = "partitePareggiate", query = "SELECT p FROM PartitaDiCalcio p WHERE p.squadraVincente IS NULL")
 public class PartitaDiCalcio extends Evento{
     @Column(name = "home_team", nullable = false)
     private String squadraCasa;

@@ -70,4 +70,9 @@ public class EventoDao {
         query.setParameter("evento", e);
         return query.getResultList();
     }
+
+    public List<PartitaDiCalcio> getPartitePareggiate(){
+        TypedQuery<PartitaDiCalcio> query = entityManager.createNamedQuery("partitePareggiate", PartitaDiCalcio.class);
+        return query.getResultList();
+    }
 }
