@@ -1,10 +1,7 @@
 package CarmineGargiulo.entities;
 
 import CarmineGargiulo.Enums.TipoEvento;
-import jakarta.persistence.Column;
-import jakarta.persistence.DiscriminatorValue;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -13,10 +10,13 @@ import java.util.List;
 @Table(name = "athletics_competitions")
 @DiscriminatorValue("Athletic Competition")
 public class GaraDiAtletica extends Evento {
+
+    @OneToMany
     @Column(name = "athlets", nullable = false)
     private List<Persona> atleti;
 
-    @Column(name = "winner", nullable = false)
+    @OneToOne
+    @JoinColumn(name = "winner_id", nullable = false)
     private Persona vincitore;
 
     public GaraDiAtletica(){

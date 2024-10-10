@@ -15,7 +15,7 @@ public class PartitaDiCalcio extends Evento{
     @Column(name = "away_team", nullable = false)
     private String squadraOspite;
 
-    @Column(name = "winner", nullable = false)
+    @Column(name = "winner")
     private String squadraVincente;
 
     @Column(name = "home_goals", nullable = false)
