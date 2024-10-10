@@ -13,10 +13,10 @@ import java.util.List;
 @Table(name = "athletics_competitions")
 @DiscriminatorValue("Athletic Competition")
 public class GaraDiAtletica extends Evento {
-    @Column(name = "athlets")
+    @Column(name = "athlets", nullable = false)
     private List<Persona> atleti;
 
-    @Column(name = "winner")
+    @Column(name = "winner", nullable = false)
     private Persona vincitore;
 
     public GaraDiAtletica(){
