@@ -67,13 +67,24 @@ public class Application {
                 TipoEvento.PUBBLICO, 30000, sanSiroFromDb, Genere.ROCK, true);
         Concerto concertoMozart = new Concerto("Concerto Mozart", LocalDate.of(1780, 5, 21),
                 "Concerto Mozart", TipoEvento.PRIVATO, 1000, casaMiaFromDb, Genere.CLASSICO, false);
+        PartitaDiCalcio InterMilan = new PartitaDiCalcio("Inter-Milan", LocalDate.of(2024, 9, 22),
+                "Derby di Milano", TipoEvento.PUBBLICO, 78000, sanSiroFromDb, "Inter", 1, "Milan", 2);
+        PartitaDiCalcio MilanLecce = new PartitaDiCalcio("MilanLecce", LocalDate.of(2024, 9, 27),
+                "5° giornata di Serie A", TipoEvento.PUBBLICO, 60000, sanSiroFromDb, "Milan", 3, "Lecce", 0);
+        PartitaDiCalcio NapoliComo = new PartitaDiCalcio("NapoliComo", LocalDate.of(2024, 10, 4),
+                "6° giornata di Serie A", TipoEvento.PUBBLICO, 50000, stadioMaradonaFromDb, "Napoli", 3, "Como", 1);
        /* ed.save(concertoImagine);
         ed.save(concertoACDC);
         ed.save(concertoMozart);*/
 //        ed.save(concertoTaylor);
+        /*ed.save(InterMilan);
+        ed.save(NapoliComo);
+        ed.save(MilanLecce);*/
         ed.getConcertiInStreaming(true).forEach(System.out::println);
         ed.getConcertiInStreaming(false).forEach(System.out::println);
         ed.getConcertiPerGenere(Genere.POP).forEach(System.out::println);
+        ed.getPartiteVinteInCasa().forEach(System.out::println);
+        ed.getPartiteVinteInTrasferta().forEach(System.out::println);
 
     }
 }

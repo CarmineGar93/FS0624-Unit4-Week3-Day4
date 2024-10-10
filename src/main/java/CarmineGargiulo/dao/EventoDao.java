@@ -3,6 +3,7 @@ package CarmineGargiulo.dao;
 import CarmineGargiulo.Enums.Genere;
 import CarmineGargiulo.entities.Concerto;
 import CarmineGargiulo.entities.Evento;
+import CarmineGargiulo.entities.PartitaDiCalcio;
 import CarmineGargiulo.exceptions.NotFoundException;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
@@ -50,6 +51,16 @@ public class EventoDao {
     public List<Concerto> getConcertiPerGenere(Genere genere){
         TypedQuery<Concerto> query = entityManager.createQuery("SELECT c FROM Concerto c WHERE c.genere = :genere", Concerto.class);
         query.setParameter("genere", genere);
+        return query.getResultList();
+    }
+
+    public List<PartitaDiCalcio> getPartiteVinteInCasa(){
+        TypedQuery<PartitaDiCalcio> query = entityManager.createQuery("SELECT p FROM PartitaDiCalcio p WHERE p.squadraVincente = p.squadraCasa", PartitaDiCalcio.class);
+        return query.getResultList();
+    }
+
+    public List<PartitaDiCalcio> getPartiteVinteInTrasferta(){
+        TypedQuery<PartitaDiCalcio> query = entityManager.createQuery("SELECT p FROM PartitaDiCalcio p WHERE p.squadraVincente = p.squadraOspite", PartitaDiCalcio.class);
         return query.getResultList();
     }
 }

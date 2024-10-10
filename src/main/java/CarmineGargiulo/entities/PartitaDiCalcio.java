@@ -83,7 +83,7 @@ public class PartitaDiCalcio extends Evento{
         return "PartitaDiCalcio{" +
                 "squadraCasa='" + squadraCasa + '\'' +
                 ", squadraOspite='" + squadraOspite + '\'' +
-                ", squadraVincenter='" + squadraVincente + '\'' +
+                ", squadraVincente='" + squadraVincente + '\'' +
                 ", golSquadraCasa=" + golSquadraCasa +
                 ", golSquadraOspite=" + golSquadraOspite +
                 "} " + super.toString();
