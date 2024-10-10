@@ -87,14 +87,19 @@ public class Application {
 
         Evento InterMilanFromDb = ed.getById("5787ff9c-4874-4726-a0cd-0c61bfba3704");
         Evento concertoMozartFromDb = ed.getById("13b1d763-4a61-44a1-ab48-b07ef846703e");
+        Evento metri100fromDb = ed.getById("ba855cb5-6dc5-493d-b235-14545b3e5a1a");
         Partecipazione p1 = new Partecipazione(Stato.DA_CONFERMARE, carmineFromDb, InterMilanFromDb);
         Partecipazione p2 = new Partecipazione(Stato.DA_CONFERMARE, alenaFromDb, InterMilanFromDb);
         Partecipazione p3 = new Partecipazione(Stato.CONFERMATA, francescoFromDb, concertoMozartFromDb);
         Partecipazione p4 = new Partecipazione(Stato.DA_CONFERMARE, carmineFromDb, concertoMozartFromDb);
+        Partecipazione p5 = new Partecipazione(Stato.CONFERMATA, carmineFromDb, metri100fromDb);
+        Partecipazione p6 = new Partecipazione(Stato.CONFERMATA, alenaFromDb, metri100fromDb);
        /* pad.save(p1);
         pad.save(p2);
         pad.save(p3);
         pad.save(p4);*/
+        /*pad.save(p5);
+        pad.save(p6);*/
        /* ed.save(concertoImagine);
         ed.save(concertoACDC);
         ed.save(concertoMozart);*/
@@ -115,6 +120,7 @@ public class Application {
         ed.getGaraDiAtleticaPerVincitore(alenaFromDb).forEach(System.out::println);
         System.out.println("Vediamo quante gare ho fatto");
         ed.getGaraDiAtleticaPerPartecipante(francescoFromDb).forEach(System.out::println);
+        ed.getEventiSoldOut().forEach(System.out::println);
 
 
 

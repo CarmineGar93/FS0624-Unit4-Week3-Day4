@@ -84,4 +84,9 @@ public class EventoDao {
         query.setParameter("persona", p);
         return query.getResultList();
     }
+
+    public List<Evento> getEventiSoldOut(){
+        TypedQuery<Evento> query = entityManager.createNamedQuery("eventoSoldOut", Evento.class);
+        return query.getResultList();
+    }
 }
